@@ -1,0 +1,271 @@
+{
+  "info": {
+    "name": "Orderflow",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "orderId",
+      "value": ""
+    },
+    {
+      "key": "shipmentId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "List inventory",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/inventory",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "inventory"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerEmail\": \"jane@example.com\",\n  \"items\": [\n    {\n      \"sku\": \"SKU-1001\",\n      \"quantity\": 2\n    }\n  ]\n}"
+        }
+      }
+    },
+    {
+      "name": "List orders",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get order",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/{{orderId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Cancel order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/orders/{{orderId}}/cancel",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "{{orderId}}",
+            "cancel"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Shipment by order",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/by-order/{{orderId}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "by-order",
+            "{{orderId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Advance shipment (carrier scan)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/advance",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "advance"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Raise exception",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/exception",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "exception"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reason\": \"Address invalid\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Resolve exception",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/shipments/{{shipmentId}}/resolve",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "shipments",
+            "{{shipmentId}}",
+            "resolve"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"note\": \"Address corrected\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Restock",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/inventory/SKU-1001/restock",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "inventory",
+            "SKU-1001",
+            "restock"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"quantity\": 25\n}"
+        }
+      }
+    }
+  ]
+}

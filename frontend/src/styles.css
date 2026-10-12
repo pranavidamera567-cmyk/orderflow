@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; background: #f3f5f7; color: #1c2430; }
+header { background: #1c2430; color: #fff; padding: 12px 24px; display: flex; align-items: center; gap: 32px; }
+header h1 { font-size: 18px; margin: 0; }
+nav button { background: none; border: 0; color: #aab; padding: 6px 12px; cursor: pointer; text-transform: capitalize; }
+nav button.active { color: #fff; border-bottom: 2px solid #4da3ff; }
+main { padding: 20px 24px; }
+.split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+.panel { background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 1px 3px #0002; }
+.filters { display: flex; gap: 8px; margin-bottom: 12px; }
+.filters input { flex: 1; }
+input, select { padding: 6px 8px; border: 1px solid #c8ced6; border-radius: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid #eee; }
+tbody tr { cursor: pointer; } tbody tr:hover, tr.selected { background: #eef4fb; }
+button { padding: 6px 12px; border: 1px solid #4da3ff; background: #4da3ff; color: #fff; border-radius: 4px; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+button.danger { background: #c0392b; border-color: #c0392b; }
+.actions { display: flex; gap: 8px; margin-top: 12px; }
+.actions input { flex: 1; }
+.badge { font-size: 12px; padding: 2px 8px; border-radius: 10px; background: #ddd; }
+.badge.CONFIRMED { background: #d6e8ff; } .badge.SHIPPED { background: #ffe9b8; }
+.badge.DELIVERED { background: #cdeed7; } .badge.EXCEPTION { background: #f8c9c4; }
+.badge.CANCELLED { background: #e4e4e4; }
+.timeline { padding-left: 18px; } .timeline li { margin-bottom: 8px; } .timeline .exc { color: #c0392b; }
+.error { color: #c0392b; } .low { color: #c0392b; font-weight: 600; }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }

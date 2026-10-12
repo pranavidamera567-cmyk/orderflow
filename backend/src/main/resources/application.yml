@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: orderflow
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/orderflow}
+    username: ${DB_USER:orderflow}
+    password: ${DB_PASSWORD:orderflow}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP:localhost:9092}
+    consumer:
+      auto-offset-reset: earliest
+
+shipments:
+  simulator:
+    enabled: ${SIMULATOR_ENABLED:true}
+    interval-ms: ${SIMULATOR_INTERVAL_MS:15000}
